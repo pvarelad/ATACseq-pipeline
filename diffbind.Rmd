@@ -1,0 +1,73 @@
+
+
+```{r}
+#BiocManager::install('DiffBind')
+#BiocManager::install('rtracklater')
+library(DiffBind)
+library(rtracklayer)
+```
+
+```{r}
+
+treated <- dba.analyze("diffbind.csv")
+
+```
+
+```{r}
+treated.DB <- dba.report(treated)
+
+```
+
+```{r}
+sig_results <- dba.report(treated, th=0.15)
+export.bed(sig_results, "significant_peaks.bed")
+```
+
+```{r}
+# Load libraries
+library(DiffBind)
+library(rtracklayer)
+
+# Run DiffBind analysis
+treated <- dba.analyze("diffbind.csv")
+
+# Get significant results
+sig_results <- dba.report(treated, th=0.15)
+
+# Convert to data frame to add proper scores
+sig_df <- as.data.frame(sig_results)
+
+# Create proper BED format with fold-change as score
+bed_output <- data.frame(
+  chrom = sig_df$seqnames,
+  chromStart = sig_df$start,
+  chromEnd = sig_df$end,
+  name = paste0("peak_", 1:nrow(sig_df)),
+  score = round(abs(sig_df$Fold) * 100),  # Use fold-change as score (scaled)
+  strand = sig_df$strand
+)
+
+# Alternative: use -log10(FDR) as score (higher score = more significant)
+# bed_output$score <- round(-log10(sig_df$FDR) * 100)
+
+# Write BED file
+write.table(bed_output, 
+            file = "significant_peaks.bed",
+            sep = "\t",
+            quote = FALSE,
+            row.names = FALSE,
+            col.names = FALSE)
+
+# Also save full results with all statistics
+write.table(sig_df,
+            file = "significant_peaks_full.txt",
+            sep = "\t",
+            quote = FALSE,
+            row.names = FALSE)
+
+# Print summary
+cat("Exported", nrow(bed_output), "significant peaks\n")
+cat("Fold-change range:", min(sig_df$Fold), "to", max(sig_df$Fold), "\n")
+cat("FDR range:", min(sig_df$FDR), "to", max(sig_df$FDR), "\n")
+```
+

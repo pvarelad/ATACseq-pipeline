@@ -1,0 +1,9 @@
+SampleID,Tissue,Factor,Condition,Replicate,bamReads,Peaks,PeakCaller
+ATAC_cDC1_WT_1_peaks,cDC1,ATAC,WT,1,results/ATAC_cDC1_WT_1.sorted.bam,results/ATAC_cDC1_WT_1_peaks.bed,narrowPeak
+ATAC_cDC1_WT_2_peaks,cDC1,ATAC,WT,2,results/ATAC_cDC1_WT_2.sorted.bam,results/ATAC_cDC1_WT_2_peaks.bed,narrowPeak
+ATAC_cDC1_KO_1_peaks,cDC1,ATAC,KO,1,results/ATAC_cDC1_KO_1.sorted.bam,results/ATAC_cDC1_KO_1_peaks.bed,narrowPeak
+ATAC_cDC1_KO_2_peaks,cDC1,ATAC,KO,2,results/ATAC_cDC1_KO_2.sorted.bam,results/ATAC_cDC1_KO_2_peaks.bed,narrowPeak
+ATAC_cDC2_WT_1_peaks,cDC2,ATAC,WT,1,results/ATAC_cDC2_WT_1.sorted.bam,results/ATAC_cDC2_WT_1_peaks.bed,narrowPeak
+ATAC_cDC2_WT_2_peaks,cDC2,ATAC,WT,2,results/ATAC_cDC2_WT_2.sorted.bam,results/ATAC_cDC2_WT_2_peaks.bed,narrowPeak
+ATAC_cDC2_KO_1_peaks,cDC2,ATAC,KO,1,results/ATAC_cDC2_KO_1.sorted.bam,results/ATAC_cDC2_KO_1_peaks.bed,narrowPeak
+ATAC_cDC2_KO_2_peaks,cDC2,ATAC,KO,2,results/ATAC_cDC2_KO_2.sorted.bam,results/ATAC_cDC2_KO_2_peaks.bed,narrowPeak
